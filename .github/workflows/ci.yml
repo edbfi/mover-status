@@ -1,0 +1,56 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      pr-number:
+        description: PR number for a repair dispatch
+        type: string
+        default: ''
+      expected-head-sha:
+        description: Exact repaired PR commit
+        type: string
+        default: ''
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: engels74/automation/actions/dispatch-guard@v1.0.0
+        with:
+          token: ${{ github.token }}
+          pr-number: ${{ inputs.pr-number }}
+          expected-head-sha: ${{ inputs.expected-head-sha }}
+  shell:
+    needs: guard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - run: bash .github/scripts/check.sh
+  required:
+    name: ci / required
+    if: always()
+    needs: [guard, shell]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: engels74/automation/actions/dispatch-guard@v1.0.0
+        with:
+          token: ${{ github.token }}
+          pr-number: ${{ inputs.pr-number }}
+          expected-head-sha: ${{ inputs.expected-head-sha }}
+      - uses: engels74/automation/actions/gate@v1.0.0
+        with:
+          needs: ${{ toJSON(needs) }}
+          required: guard shell

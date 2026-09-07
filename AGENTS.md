@@ -7,8 +7,9 @@ repository.
 
 `moverStatus.sh` (990 lines) is the entire product: one self-contained Bash script that users
 copy-paste into the Unraid "User Scripts" plugin. There is no build, no package manager, no test
-suite, and no CI — `.github/` holds only issue templates, and `renovate.json` only governs
-dependency PRs.
+suite, or package manager. `.github/workflows/ci.yml` now runs read-only Bash
+parsing and ShellCheck on every PR/default-branch push, with a shared required
+gate. See `CI.md`; Renovate inherits the shared versioned base policy.
 
 Because it is distributed by copy-paste, the script must not `source` external files, split into
 modules, or add dependencies beyond those declared at `moverStatus.sh:15` (`bash`, `curl`, `jq`,
