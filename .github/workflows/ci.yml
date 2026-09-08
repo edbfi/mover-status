@@ -2,7 +2,7 @@ name: ci
 on:
   pull_request:
   push:
-    branches: [main, feat/standardize-ci-renovate]
+    branches: [main]
   workflow_dispatch:
     inputs:
       pr-number:
