@@ -102,7 +102,7 @@ CURRENT_VERSION="0.1.0"
 
 # Function to check the latest version
 check_latest_version() {
-    LATEST_VERSION=$(curl -fsSL --connect-timeout 5 --max-time 10 "https://api.github.com/repos/engels74/mover-status/releases" | jq -r .[0].tag_name) || LATEST_VERSION=""
+    LATEST_VERSION=$(curl -fsSL --connect-timeout 5 --max-time 10 "https://api.github.com/repos/edbfi/mover-status/releases" | jq -r .[0].tag_name) || LATEST_VERSION=""
 }
 
 # Initialize to -1 to ensure 0% notification
@@ -1750,7 +1750,7 @@ while true; do
 done
 
 # Mover Status Script
-# <https://github.com/engels74/mover-status>
+# <https://github.com/edbfi/mover-status>
 # This script monitors the progress of the "Mover" process and posts updates to Discord, Telegram, Pushover, Apprise, and/or native Unraid notifications.
 # Copyright (C) 2024 - engels74
 #
@@ -1766,4 +1766,4 @@ done
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
-# Contact: engels74@tuta.io
+# Contact: https://github.com/edbfi/mover-status/issues

@@ -7,9 +7,9 @@ body:
     attributes:
       label: "Pre-submission Checklist"
       options:
-        - label: "I have [searched Mover Status feature requests](https://github.com/engels74/mover-status/issues?q=label%3Aenhancement) and found no duplicates"
+        - label: "I have [searched Mover Status feature requests](https://github.com/edbfi/mover-status/issues?q=label%3Aenhancement) and found no duplicates"
           required: true
-        - label: "I have reviewed the [Mover Status Documentation](https://github.com/engels74/mover-status) to ensure this feature doesn't already exist"
+        - label: "I have reviewed the [Mover Status Documentation](https://github.com/edbfi/mover-status) to ensure this feature doesn't already exist"
           required: true
 
   - type: textarea

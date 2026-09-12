@@ -7,9 +7,9 @@ body:
     attributes:
       label: "Pre-submission Checklist"
       options:
-        - label: "I have searched the [Mover Status issues](https://github.com/engels74/mover-status/issues) and found no duplicates"
+        - label: "I have searched the [Mover Status issues](https://github.com/edbfi/mover-status/issues) and found no duplicates"
           required: true
-        - label: "I have reviewed the [Mover Status Documentation](https://github.com/engels74/mover-status)"
+        - label: "I have reviewed the [Mover Status Documentation](https://github.com/edbfi/mover-status)"
           required: true
 
   - type: dropdown

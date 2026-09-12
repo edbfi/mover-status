@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/engels74/mover-status/releases"><img src="https://img.shields.io/github/v/tag/engels74/mover-status?sort=semver" alt="GitHub tag (SemVer)"></a>
-  <a href="https://github.com/engels74/mover-status/blob/main/LICENSE"><img src="https://img.shields.io/github/license/engels74/mover-status" alt="License"></a>
-  <a href="https://github.com/engels74/mover-status/stargazers"><img src="https://img.shields.io/github/stars/engels74/mover-status.svg" alt="GitHub Stars"></a>
+  <a href="https://github.com/edbfi/mover-status/releases"><img src="https://img.shields.io/github/v/tag/edbfi/mover-status?sort=semver" alt="GitHub tag (SemVer)"></a>
+  <a href="https://github.com/edbfi/mover-status/blob/main/LICENSE"><img src="https://img.shields.io/github/license/edbfi/mover-status" alt="License"></a>
+  <a href="https://github.com/edbfi/mover-status/stargazers"><img src="https://img.shields.io/github/stars/edbfi/mover-status.svg" alt="GitHub Stars"></a>
   <a href="https://endsoftwarepatents.org/innovating-without-patents"><img style="height: 20px;" src="https://static.fsf.org/nosvn/esp/logos/patent-free.svg"></a>
 </p>
 
@@ -51,7 +51,7 @@ I'm using the UnraidOS plugin named "[User Scripts](https://forums.unraid.net/to
 4. Name your script "**Mover Status**" (or anything else)
 5. Select/hover the **Settings Wheel** icon of the Mover Status script you just created
 6. Select "**Edit Script**"
-7. Copy everything from the [moverStatus.sh](https://raw.githubusercontent.com/engels74/mover-status/main/moverStatus.sh) into the file 
+7. Copy everything from the [moverStatus.sh](https://raw.githubusercontent.com/edbfi/mover-status/main/moverStatus.sh) into the file
 8. Edit the variables at the top to your liking (you don't **have** to define any excluded folders - leave them empty if you don't need to exclude folders)
 9. Select "**Save Changes**" to save the script
 10. Use **Run in Background** to run the script
@@ -307,7 +307,7 @@ In API mode, Mover Status sends the target URL inside the JSON request body rath
 
 If you encounter any issues or have feature requests, please create a new issue on GitHub by following these steps:
 
-1. Go to the [Issues](https://github.com/engels74/mover-status/issues) tab in the repository.
+1. Go to the [Issues](https://github.com/edbfi/mover-status/issues) tab in the repository.
 2. Click on **New Issue**.
 3. Select the appropriate issue template and fill out the required details.
 4. Submit the issue.
