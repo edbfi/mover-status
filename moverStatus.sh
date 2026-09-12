@@ -1750,7 +1750,7 @@ while true; do
 done
 
 # Mover Status Script
-# <https://github.com/engels74/mover-status>
+# <https://github.com/edbfi/mover-status>
 # This script monitors the progress of the "Mover" process and posts updates to Discord, Telegram, Pushover, Apprise, and/or native Unraid notifications.
 # Copyright (C) 2024 - engels74
 #
@@ -1766,4 +1766,4 @@ done
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
-# Contact: engels74@tuta.io
+# Contact: https://github.com/edbfi/mover-status/issues
