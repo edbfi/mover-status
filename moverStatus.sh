@@ -102,7 +102,7 @@ CURRENT_VERSION="0.1.0"
 
 # Function to check the latest version
 check_latest_version() {
-    LATEST_VERSION=$(curl -fsSL --connect-timeout 5 --max-time 10 "https://api.github.com/repos/engels74/mover-status/releases" | jq -r .[0].tag_name) || LATEST_VERSION=""
+    LATEST_VERSION=$(curl -fsSL --connect-timeout 5 --max-time 10 "https://api.github.com/repos/edbfi/mover-status/releases" | jq -r .[0].tag_name) || LATEST_VERSION=""
 }
 
 # Initialize to -1 to ensure 0% notification
