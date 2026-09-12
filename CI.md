@@ -15,6 +15,9 @@ There is no automated Unraid runtime/integration coverage yet. In particular,
 state recovery and notification behavior need an isolated Unraid fixture harness
 before broader dependency or runtime changes can be considered low-risk.
 
-No branch protections or rulesets are configured; automerge remains disabled.
-Manually review exact head/base, full diff, author/DCO, all expected CI jobs and
-relevant artifacts before merging through the maintainer ghmerge function.
+Renovate updates merge automatically after every required CI job passes
+on the current revision, including major and shared-policy updates. The checked
+merge action verifies genuine author sign-offs and dispatches final CI for the
+exact merged commit. No dashboard approval, branch protections or rulesets are
+configured; native GitHub automerge stays disabled. Other changes retain full
+manual review and the maintainer's `ghmerge` process.
