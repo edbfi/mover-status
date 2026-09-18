@@ -14,7 +14,7 @@ concurrency:
 jobs:
   merge:
     if: github.event_name != 'issue_comment' || github.event.issue.pull_request
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     permissions:
       contents: write

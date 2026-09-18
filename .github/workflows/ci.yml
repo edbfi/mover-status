@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   guard:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
       - uses: edbfi/automation/actions/dispatch-guard@v2.0.0
@@ -36,7 +36,7 @@ jobs:
           expected-default-sha: ${{ inputs.expected-default-sha }}
   shell:
     needs: guard
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7.0.1
@@ -47,7 +47,7 @@ jobs:
     name: ci / required
     if: always()
     needs: [guard, shell]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
       - uses: edbfi/automation/actions/dispatch-guard@v2.0.0
