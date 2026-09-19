@@ -3,15 +3,9 @@
   "extends": [
     "github>edbfi/automation//default.json#v3.0.1"
   ],
-  "automerge": false,
+  "automerge": true,
   "platformAutomerge": false,
   "ignoreTests": false,
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "*"
-      ],
-      "automerge": false
-    }
-  ]
+  "automergeStrategy": "rebase",
+  "automergeType": "pr"
 }
