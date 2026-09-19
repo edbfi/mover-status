@@ -34,7 +34,7 @@ USE_TELEGRAM=false                                                      # Enable
 USE_DISCORD=false                                                       # Enable notifications to Discord
 USE_PUSHOVER=false                                                      # Enable notifications to Pushover
 USE_APPRISE=false                                                       # Enable notifications through Apprise
-USE_UNRAID=false                                                        # Enable native Unraid notifications/toasts
+USE_UNRAID=${MOVER_STATUS_USE_UNRAID:-false}                                                        # Enable native Unraid notifications/toasts
 TELEGRAM_BOT_TOKEN="xxxx"                                               # Telegram bot token
 TELEGRAM_CHAT_ID="xxxx"                                                 # Telegram chat ID
 DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/xxxx/xxxx"        # Discord webhook URL
@@ -46,7 +46,7 @@ APPRISE_MODE="cli"                                                       # Appri
 APPRISE_BIN="/usr/bin/apprise"                                          # Apprise CLI executable
 APPRISE_API_URL="http://127.0.0.1:8000"                                 # Apprise API base URL when mode=api
 APPRISE_TITLE="Mover Status"                                             # Notification title for Apprise
-UNRAID_NOTIFY_BIN="/usr/local/emhttp/webGui/scripts/notify"              # Native Unraid notify executable
+UNRAID_NOTIFY_BIN=${MOVER_STATUS_NOTIFY_BIN:-/usr/local/emhttp/webGui/scripts/notify}              # Native Unraid notify executable
 UNRAID_EVENT="Mover Status"                                              # Event name shown by Unraid
 UNRAID_TITLE="Mover Status"                                              # Notification subject shown by Unraid
 APPRISE_TARGETS=(
@@ -54,9 +54,9 @@ APPRISE_TARGETS=(
 )
 NOTIFICATION_INCREMENT=25                                               # Notification frequency in percentage increments
 DRY_RUN=false                                                           # Enable this to test the notifications without actual monitoring
-ENABLE_DEBUG=false                                                      # Set to true to enable debug logging
-DU_POLL_INTERVAL=30                                                     # Seconds between disk usage recalculations (higher = less I/O load)
-CACHE_PATH="/mnt/cache"                                                 # Path to cache directory to monitor
+ENABLE_DEBUG=${MOVER_STATUS_DEBUG:-false}                                                      # Set to true to enable debug logging
+DU_POLL_INTERVAL=${MOVER_STATUS_POLL_INTERVAL:-30}                                                     # Seconds between disk usage recalculations (higher = less I/O load)
+CACHE_PATH=${MOVER_STATUS_CACHE_PATH:-/mnt/cache}                                                 # Path to cache directory to monitor
 ENABLE_FILE_INFO=false                                                  # Show file count and current file in notifications (requires Mover Tuning plugin)
 
 # -------------------------------------------
@@ -492,10 +492,10 @@ is_mover_running() {
 }
 
 # Mover.ini path (written by Mover Tuning plugin's age_mover)
-MOVER_INI_PATH="/usr/local/emhttp/state/mover.ini"
+MOVER_INI_PATH=${MOVER_STATUS_INI_PATH:-/usr/local/emhttp/state/mover.ini}
 
 # State persistence paths
-STATE_DIR="/tmp/mover-status"
+STATE_DIR=${MOVER_STATUS_STATE_DIR:-/tmp/mover-status}
 STATE_FILE="${STATE_DIR}/state"
 LAST_RUN_FILE="${STATE_DIR}/last-run"
 

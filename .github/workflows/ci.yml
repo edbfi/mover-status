@@ -43,10 +43,20 @@ jobs:
         with:
           persist-credentials: false
       - run: bash .github/scripts/check.sh
+  runtime:
+    needs: guard
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - run: python3 tests/runtime.py
+      - run: git diff --exit-code HEAD
   required:
     name: ci / required
     if: always()
-    needs: [guard, shell]
+    needs: [guard, shell, runtime]
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
@@ -59,4 +69,4 @@ jobs:
       - uses: edbfi/automation/actions/gate@v3.0.1
         with:
           needs: ${{ toJSON(needs) }}
-          required: guard shell
+          required: guard shell runtime
