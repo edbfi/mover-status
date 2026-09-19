@@ -14,7 +14,7 @@ on:
         type: string
         default: ''
       expected-default-sha:
-        description: Exact default-branch commit requested after a checked merge
+        description: Exact current default-branch commit
         type: string
         default: ''
 permissions:
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
-      - uses: edbfi/automation/actions/dispatch-guard@v2.0.0
+      - uses: edbfi/automation/actions/dispatch-guard@v3.0.1
         with:
           token: ${{ github.token }}
           pr-number: ${{ inputs.pr-number }}
@@ -50,13 +50,13 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
-      - uses: edbfi/automation/actions/dispatch-guard@v2.0.0
+      - uses: edbfi/automation/actions/dispatch-guard@v3.0.1
         with:
           token: ${{ github.token }}
           pr-number: ${{ inputs.pr-number }}
           expected-head-sha: ${{ inputs.expected-head-sha }}
           expected-default-sha: ${{ inputs.expected-default-sha }}
-      - uses: edbfi/automation/actions/gate@v2.0.0
+      - uses: edbfi/automation/actions/gate@v3.0.1
         with:
           needs: ${{ toJSON(needs) }}
           required: guard shell
