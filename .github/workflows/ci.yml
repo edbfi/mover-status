@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
-      - uses: edbfi/automation/actions/dispatch-guard@v3.1.0
+      - uses: edbfi/automation/actions/dispatch-guard@v4.0.0
         with:
           token: ${{ github.token }}
           pr-number: ${{ inputs.pr-number }}
@@ -60,13 +60,13 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
-      - uses: edbfi/automation/actions/dispatch-guard@v3.1.0
+      - uses: edbfi/automation/actions/dispatch-guard@v4.0.0
         with:
           token: ${{ github.token }}
           pr-number: ${{ inputs.pr-number }}
           expected-head-sha: ${{ inputs.expected-head-sha }}
           expected-default-sha: ${{ inputs.expected-default-sha }}
-      - uses: edbfi/automation/actions/gate@v3.1.0
+      - uses: edbfi/automation/actions/gate@v4.0.0
         with:
           needs: ${{ toJSON(needs) }}
           required: guard shell runtime
