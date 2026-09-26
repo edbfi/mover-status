@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 5
     steps:
-      - uses: edbfi/automation/actions/gate@v4.1.0
+      - uses: edbfi/automation/actions/gate@v4.1.1
         with:
           needs: ${{ toJSON(needs) }}
           required: shell runtime
