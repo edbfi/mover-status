@@ -9,11 +9,10 @@ The product is one file, `moverStatus.sh`. Users paste it whole into Unraid's Us
 | Task | Command |
 | --- | --- |
 | Syntax check + lint (use while editing) | `bash -n moverStatus.sh && shellcheck moverStatus.sh` |
-| Full CI shell job | `bash .github/scripts/check.sh` |
 | Runtime contract tests (~17 s) | `python3 tests/runtime.py` |
 | One test case | `python3 tests/runtime.py RuntimeContract.test_missing_cache_fails_before_notification` |
 
-- `check.sh`, and the CI `runtime` job after the tests, both end with `git diff --exit-code HEAD`, so `check.sh` always fails on a dirty tree. Before committing, run the two lint commands directly. Tests must not leave files behind in the repo.
+- Tests must not leave files behind in the repo.
 - `test_running_and_completion` loops over the scenarios `normal`, `missing`, `malformed`, `du`, `notify-error` as `subTest`s, so one scenario can't be picked from the CLI. Run the whole method (`RuntimeContract.test_running_and_completion`).
 - The script needs GNU `stat -c` / `date -d`. On macOS, `tests/runtime.py` puts `/opt/homebrew/opt/coreutils/libexec/gnubin` on its PATH when it exists (`brew install coreutils`).
 - There is no formatter, package manager or build step. Don't add one.
