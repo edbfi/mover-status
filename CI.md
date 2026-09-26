@@ -1,46 +1,13 @@
-# Development CI
+# Local validation
 
-Run `bash .github/scripts/check.sh` locally with Bash and ShellCheck. Every PR,
-default-branch push and manual dispatch runs these same checks and an isolated runtime contract fixture. ShellCheck comes from the Ubuntu 24.04 runner image; its patch
-updates follow the runner maintenance cycle rather than a separate download.
+Repository CI, automated dependency updates and workflow-based deployment are disabled.
+Validate changes locally and review dependency updates manually.
+Use Conventional Commit titles and matching author sign-offs (`git commit -s`).
 
-The shared `ci / required` gate requires all prerequisites to succeed. Tokens are
-read-only; actions use full version tags. Renovate inherits the versioned shared
-base policy. No irrelevant formatter, package manager or placeholder test is added.
+Available validation entry points (install the project toolchain first):
 
-`python3 tests/runtime.py` executes the real entry point with disposable cache,
-INI and state paths. Synthetic commands supply mover identity, time, disk usage
-and native notification delivery; no mover or network notification is started.
-The mandatory `runtime` job covers idle detection, 0/50/completed progress,
-missing/malformed INI preparation, standard-mover fallback, notification failure
-and invalid cache rejection. Every process has a ten-second deadline and a
-process-group cleanup; temporary state is removed on failure as well as success.
+```sh
+bash .github/scripts/check.sh
+```
 
-This proves the simulated Unraid command contract, not real disk movement,
-Unraid plugin lifecycle, `/proc` identity or delivery through Unraid's actual
-notification service. Those still require a disposable licensed Unraid runner
-with User Scripts and Mover Tuning. No production host or live recipient belongs
-in CI. On macOS the contract fixture needs Homebrew GNU coreutils.
-
-Negative fixture inputs are part of the same required run. An assertion failure
-or timeout exits nonzero, and `ci / required` directly requires `runtime`.
-
-Shared actions, workflows and presets use immutable `v4.0.0` references.
-Renovate is the sole ongoing dependency merge owner. Through the shared
-`automerge.json` preset it arms GitHub auto-merge with the rebase strategy, and
-GitHub merges only after every required CI and policy check passes on the
-current head. Shared Renovate policy updates remain manual;
-release-age rules, holds and repository-specific updater ownership still apply.
-The legacy Actions merger and its comment commands are retired.
-
-The separate PR policy workflow verifies Conventional Commit titles, genuine
-matching author sign-offs, Renovate provenance, holds, outstanding review requests
-and unresolved changes requests. After a pass, policy re-runs the other event's
-older failed verdict for the same head (`actions: write`), so a withdrawn
-objection clears without a manual re-run. Require its actual emitted policy context alongside
-all existing application/content checks, pinned to GitHub Actions, with strict
-up-to-date branch protection. Preserve stronger review requirements. Explicit CI
-dispatches do not substitute for a missing metadata policy result. Review exact
-head/base, full diffs and all required results before a bootstrap merge, then
-verify resulting default-branch CI. Repository-specific updater ownership and
-manual publication or delivery controls remain unchanged.
+See [CLAUDE.md](CLAUDE.md) for project-specific commands and test requirements.
