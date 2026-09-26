@@ -71,6 +71,4 @@ Derived from the Apprise (#28) and native Unraid (#29) commits. Each one touched
 
 ## Reference docs
 
-- `CI.md`: CI jobs, the runtime-fixture scope (what it does and doesn't prove), and Renovate/PR-policy ownership. Read it before changing `.github/workflows/`, `tests/runtime.py` or `renovate.json`.
 - `README.md`: user-facing settings and setup. Update it whenever a user-editable variable changes.
-- PR titles must be Conventional Commits and carry matching author sign-offs (checked by the shared `edbfi/automation` PR-policy workflow).
