@@ -116,8 +116,8 @@ For isolated testing, these environment variables override only the correspondin
 setting: `MOVER_STATUS_USE_UNRAID`, `MOVER_STATUS_NOTIFY_BIN`, `MOVER_STATUS_DEBUG`,
 `MOVER_STATUS_POLL_INTERVAL`, `MOVER_STATUS_CACHE_PATH`, `MOVER_STATUS_INI_PATH`,
 and `MOVER_STATUS_STATE_DIR`. Without them, the copy-paste installation retains
-its existing paths and settings. See [CI.md](CI.md) for the simulated runtime
-contract and the remaining real-Unraid acceptance.
+its existing paths and settings. Run `python3 tests/runtime.py` for the simulated runtime contract.
+Validate real-Unraid behavior separately on the target system.
 
 ### 🤖 Telegram Bot Setup 
 
