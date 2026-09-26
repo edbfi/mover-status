@@ -16,7 +16,7 @@ The product is one file, `moverStatus.sh`. Users paste it whole into Unraid's Us
 - `check.sh`, and the CI `runtime` job after the tests, both end with `git diff --exit-code HEAD`, so `check.sh` always fails on a dirty tree. Before committing, run the two lint commands directly. Tests must not leave files behind in the repo.
 - `test_running_and_completion` loops over the scenarios `normal`, `missing`, `malformed`, `du`, `notify-error` as `subTest`s, so one scenario can't be picked from the CLI. Run the whole method (`RuntimeContract.test_running_and_completion`).
 - The script needs GNU `stat -c` / `date -d`. On macOS, `tests/runtime.py` puts `/opt/homebrew/opt/coreutils/libexec/gnubin` on its PATH when it exists (`brew install coreutils`).
-- There is no formatter, package manager or build step. Don't add one (`CI.md` rules this out).
+- There is no formatter, package manager or build step. Don't add one.
 
 ## How the runtime test works
 
