@@ -1,0 +1,56 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# Copy as .github/workflows/ci.yml; adapt commands, directories and runners to design/repos.md.
+# Allocate a distinct weekly minute during rollout. Every added PR job belongs in ci-ok.
+name: CI
+on:
+  pull_request:
+  push: { branches: [main] }
+  workflow_dispatch:
+  schedule: [{ cron: "1 5 * * 0" }]   # weekly main revalidation; minute unique per repo
+permissions: {}
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('ci-pr-{0}-{1}', github.event.pull_request.number, github.event.pull_request.head.sha) || format('ci-{0}', github.sha) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions: { contents: read }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204 # v3.0.1
+        with: { extra-args: "--all-files --hook-stage manual" }
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions: { contents: read }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - name: Read Python version
+        id: python
+        run: |
+          version="$(cat .python-version)"
+          test -n "$version"
+          printf 'version=%s\n' "$version" >> "$GITHUB_OUTPUT"
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with: { python-version: "${{ steps.python.outputs.version }}", enable-cache: false }
+      # tests/runtime.py: timing-sensitive, needs GNU date/stat (Linux only).
+      - run: uv run --no-project bash scripts/smoke.sh
+  ci-ok:
+    if: always()
+    needs: [checks, smoke]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - env:
+          NEEDS: ${{ toJSON(needs) }}
+          ALLOWED_SKIPS: ""
+        run: |
+          jq -e --arg skips "$ALLOWED_SKIPS" '
+            ($skips | split(",") | map(select(. != ""))) as $allowed
+            | length > 0 and all(to_entries[]; .value.result == "success"
+                or (.value.result == "skipped" and (.key | IN($allowed[]))))
+          ' <<<"$NEEDS" >/dev/null || { echo "::error::ci-ok failed: $(jq -c 'map_values(.result)' <<<"$NEEDS")"; exit 1; }
