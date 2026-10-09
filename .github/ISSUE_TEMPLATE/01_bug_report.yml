@@ -62,10 +62,10 @@ body:
       label: "Log Output"
       description: |
         Provide relevant log output or script debug information:
-        
+
         - Run the script with debugging enabled (set `ENABLE_DEBUG=true` in the script configuration).
         - Upload the logs to https://logs.notifiarr.com and share the link.
-        
+
         ⚠️ IMPORTANT:
         - Set the **Expires:** field on https://logs.notifiarr.com to `1 year` or `Never`, so the log doesn't expire too quickly.
         - Remove any sensitive information (e.g., IP addresses, API keys).
