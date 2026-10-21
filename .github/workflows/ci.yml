@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copy as .github/workflows/ci.yml; adapt commands, directories and runners to design/repos.md.
-# Allocate a distinct weekly minute during rollout. Every added PR job belongs in ci-ok.
+# Copy as .github/workflows/ci.yml; adapt commands, directories and runners to the repo.
+# Give each repo its own weekly minute. Every added PR job belongs in ci-ok. No paths: filter:
+# a skipped workflow leaves the required checks pending.
 name: CI
 on:
   pull_request:
