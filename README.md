@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="mover-status.svg" alt="mover-status logo" width="256" height="256">
+  <img src="mover-status.svg" alt="mover-status logo" width="160" height="160">
 </p>
 
 <h1 align="center">mover-status</h1>
@@ -338,4 +338,8 @@ If you encounter any issues or have feature requests, please create a new issue 
 
 [![GNU AGPLv3 Image](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-This project is licensed under the AGPLv3 License - see the LICENSE file for details.
+The original code in this project is free software: you can redistribute it and/or
+modify it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version (`AGPL-3.0-or-later`). See [LICENSE](LICENSE) for the full
+license text. Third-party software retains its own licenses and notices.
