@@ -1,14 +1,25 @@
-# Mover Status
+<p align="center">
+  <img src="mover-status.svg" alt="mover-status logo" width="256" height="256">
+</p>
+
+<h1 align="center">mover-status</h1>
 
 <p align="center">
-  <img src="mover-status.svg" alt="base-image" style="width: 40%;"/>
+  <strong>Live progress and notifications for the Unraid mover</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/edbfi/mover-status/releases"><img src="https://img.shields.io/github/v/tag/edbfi/mover-status?sort=semver" alt="GitHub tag (SemVer)"></a>
-  <a href="https://github.com/edbfi/mover-status/blob/main/LICENSE"><img src="https://img.shields.io/github/license/edbfi/mover-status" alt="License"></a>
-  <a href="https://github.com/edbfi/mover-status/stargazers"><img src="https://img.shields.io/github/stars/edbfi/mover-status.svg" alt="GitHub Stars"></a>
-  <a href="https://endsoftwarepatents.org/innovating-without-patents"><img style="height: 20px;" src="https://static.fsf.org/nosvn/esp/logos/patent-free.svg"></a>
+  <a href="https://github.com/edbfi/mover-status/blob/main/LICENSE" title="Mover Status script: AGPL-3.0-or-later"><img src="https://img.shields.io/badge/license-AGPL--3.0--or--later-blue?style=flat" alt="License: AGPL-3.0-or-later"></a>
+  <a href="https://git.savannah.gnu.org/cgit/bash.git/" title="GNU Bash source"><img src="https://img.shields.io/badge/Bash-4EAA25?style=flat&amp;logo=gnubash&amp;logoColor=white" alt="Bash"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/edbfi/mover-status/releases"><img src="https://img.shields.io/github/v/tag/edbfi/mover-status?sort=semver&amp;style=flat" alt="GitHub tag (SemVer)"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/edbfi/mover-status/stargazers"><img src="https://img.shields.io/github/stars/edbfi/mover-status.svg?style=flat" alt="GitHub Stars"></a>
+  <a href="https://endsoftwarepatents.org/innovating-without-patents"><img height="20" src="https://static.fsf.org/nosvn/esp/logos/patent-free.svg" alt="Patent-free innovation"></a>
 </p>
 
 ## 📑 Table of Contents
